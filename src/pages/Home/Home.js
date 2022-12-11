@@ -1,12 +1,35 @@
 import React from 'react';
-import { useGetAllTasksQuery } from '../../redux/api/apiSlice';
+import { Outlet, Link } from "react-router-dom";
 
 const Home = () => {
-    const { data } = useGetAllTasksQuery();
-    console.log(data)
+
     return (
-        <div>
-            this is home page
+        <div className="Home pt-2">
+            <div className="flex flex-row">
+                <div>
+                    <div className="drawer drawer-mobile">
+                        <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+                        <div className="drawer-content flex flex-col items-center justify-center">
+                            <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+
+                        </div>
+                        <div className="drawer-side">
+                            <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
+                            <ul className="menu p-4 w-80 bg-base-100 text-base-content">
+                                <li>
+                                    <Link to="/">Dashboard</Link>
+                                    <Link to="/all-task">All Task</Link>
+                                    <Link to="/pending-task">Pending Task</Link>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <div className="bg-base-200 grow">
+                    <Outlet />
+                </div>
+            </div>
         </div>
     );
 };
