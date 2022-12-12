@@ -1,8 +1,15 @@
 import React from 'react';
-import { BsListTask } from 'react-icons/bs';
+import { BsListTask, BsLayoutSidebarInset } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { handleSidebarState } from '../../redux/state/sidebarSlice/sidebarSlice';
 
 const Header = ({ children }) => {
+    const dispatch = useDispatch()
+
+    const handleSideBar = () => {
+        dispatch(handleSidebarState())
+    }
 
     function NavItems() {
         return (
@@ -18,6 +25,11 @@ const Header = ({ children }) => {
                 <input id="task-manager-header" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col">
                     <div className="w-full navbar bg-base-100 shadow-md">
+                        <div>
+                            <label onClick={handleSideBar} htmlFor="task-manager-sidebar" className="drawer-button cursor-pointer text-2xl ml-5 mr-3">
+                                <BsLayoutSidebarInset />
+                            </label>
+                        </div>
                         <div className="flex-1 px-2 mx-2">
                             <Link className="flex" to="/">
                                 <span className="text-primary mr-3 border-2 border-primary font-bold p-1 rounded-md inline-block"><BsListTask /></span>

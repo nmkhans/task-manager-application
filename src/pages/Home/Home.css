@@ -1,0 +1,11 @@
+.sidebar {
+    transition: .5s;
+}
+
+.sidebar-close {
+    width: 0%;
+}
+
+.sidebar-open {
+    width: auto;
+}
