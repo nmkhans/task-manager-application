@@ -4,7 +4,7 @@ import { Outlet, Link } from "react-router-dom";
 const Home = () => {
 
     return (
-        <div className="Home pt-2">
+        <div className="Home pt-1">
             <div className="flex flex-row">
                 <div>
                     <div className="drawer drawer-mobile">
@@ -17,12 +17,11 @@ const Home = () => {
                             <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                             <ul className="menu p-4 w-80 bg-base-100 text-base-content">
                                 <li>
-                                    <Link to="/">Dashboard</Link>
+                                    <Link className="hover:bg-primary" to="/">Dashboard</Link>
                                     <Link to="/all-task">All Task</Link>
                                     <Link to="/pending-task">Pending Task</Link>
                                 </li>
                             </ul>
-
                         </div>
                     </div>
                 </div>
