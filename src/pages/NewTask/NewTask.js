@@ -1,11 +1,11 @@
 import React from 'react';
 
-const AllTask = () => {
+const NewTask = () => {
     return (
         <div>
-            All task
+            new task
         </div>
     );
 };
 
-export default AllTask;
+export default NewTask;

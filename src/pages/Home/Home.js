@@ -3,9 +3,11 @@ import "./Home.css";
 import { Outlet } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import LinkTo from '../../components/LinkTo/LinkTo';
-import { MdOutlineDashboard } from "react-icons/md";
+import { MdOutlineDashboard, MdDownloadDone } from "react-icons/md";
 import { AiOutlineEdit } from "react-icons/ai";
 import { GiSandsOfTime } from "react-icons/gi";
+import { AiOutlineBars } from "react-icons/ai";
+import { CgCloseR } from "react-icons/cg";
 
 
 const Home = () => {
@@ -36,17 +38,45 @@ const Home = () => {
                                         </span>
                                         Dashboard
                                     </LinkTo>
-                                    <LinkTo to="/all-task">
+                                </li>
+                                <li>
+                                    <LinkTo to="/create-task">
                                         <span>
                                             <AiOutlineEdit />
                                         </span>
-                                        All Task
+                                        Create New
                                     </LinkTo>
+                                </li>
+                                <li>
+                                    <LinkTo to="/new-task">
+                                        <span>
+                                            <AiOutlineBars />
+                                        </span>
+                                        New Task
+                                    </LinkTo>
+                                </li>
+                                <li>
                                     <LinkTo to="/pending-task">
                                         <span>
                                             <GiSandsOfTime />
                                         </span>
-                                        Pending Task
+                                        Pending
+                                    </LinkTo>
+                                </li>
+                                <li>
+                                    <LinkTo to="/completed-task">
+                                        <span>
+                                            <MdDownloadDone />
+                                        </span>
+                                        Completed
+                                    </LinkTo>
+                                </li>
+                                <li>
+                                    <LinkTo to="/canceled-task">
+                                        <span>
+                                            <CgCloseR />
+                                        </span>
+                                        Canceled
                                     </LinkTo>
                                 </li>
                             </ul>
@@ -57,7 +87,7 @@ const Home = () => {
                     <Outlet />
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
