@@ -2,7 +2,7 @@ import React from 'react';
 
 const CreateTask = () => {
     return (
-        <div>
+        <div className="py-5 px-10">
             create task
         </div>
     );

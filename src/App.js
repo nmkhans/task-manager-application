@@ -2,9 +2,10 @@ import React from "react";
 import './App.css';
 import { Routes, Route } from "react-router-dom";
 import Home from './pages/Home/Home';
-import DashBoard from './pages/DashBoard/DashBoard';
-import PendingTask from './pages/PendingTask/PendingTask';
 import Login from "./pages/Login/Login";
+import Register from './pages/Register/Register';
+import PendingTask from './pages/PendingTask/PendingTask';
+import DashBoard from './pages/DashBoard/DashBoard';
 import Header from './components/Header/Header';
 import NewTask from './pages/NewTask/NewTask';
 import CreateTask from './pages/CreateTask/CreateTask';
@@ -25,6 +26,7 @@ function App() {
             <Route path="/canceled-task" element={<CanceledTask />} />
           </Route>
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </Header>
     </>
