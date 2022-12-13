@@ -10,10 +10,18 @@ export const api = createApi({
         getAllTasks: builder.query({
             query: () => "/get-tasks",
             providesTags: ["task"]
+        }),
+        uploadImage: builder.mutation({
+            query: (data) => ({
+                url: "/image-upload",
+                method: "POST",
+                body: data
+            })
         })
     })
 });
 
 export const {
-    useGetAllTasksQuery
+    useGetAllTasksQuery,
+    useUploadImageMutation,
 } = api;
