@@ -1,11 +1,15 @@
 .sidebar {
-    transition: .5s;
+    transition: .6s;
 }
 
 .sidebar-close {
     width: 0%;
+    transform: scaleX(0);
+    transform-origin: center left;
 }
 
 .sidebar-open {
     width: auto;
+    transform: scaleX(1);
+    transform-origin: center left;
 }

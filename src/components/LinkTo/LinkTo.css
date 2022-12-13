@@ -1,0 +1,16 @@
+.nav-style {
+    transition: .5s;
+    font-weight: 400;
+}
+
+.nav-style:hover {
+    background: #c80e9f !important;
+    color: #fff;
+    font-weight: 400;
+}
+
+.nav-active {
+    background: #c80e9f !important;
+    color: #fff;
+    font-weight: 400;
+}
