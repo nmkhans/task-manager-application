@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import "./Home.css";
 import { Outlet } from "react-router-dom";
 import { useSelector } from 'react-redux';
@@ -8,6 +8,7 @@ import { AiOutlineEdit } from "react-icons/ai";
 import { GiSandsOfTime } from "react-icons/gi";
 import { AiOutlineBars } from "react-icons/ai";
 import { CgCloseR } from "react-icons/cg";
+import keyHandler from './../../utilities/keyHandler/keyHandler';
 
 
 const Home = () => {
@@ -21,6 +22,10 @@ const Home = () => {
         sidebarRef?.current?.classList.remove("sidebar-open");
         sidebarRef?.current?.classList.add("sidebar-close");
     }
+
+    useEffect(() => {
+        keyHandler(sidebarRef)
+    }, [])
 
     return (
         <div className="Home pt-1">
