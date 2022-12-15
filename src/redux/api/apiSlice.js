@@ -17,6 +17,13 @@ export const api = createApi({
                 method: "POST",
                 body: data
             })
+        }),
+        registerUser: builder.mutation({
+            query: (data) => ({
+                url: "/register-user",
+                method: "POST",
+                body: data
+            })
         })
     })
 });
@@ -24,4 +31,5 @@ export const api = createApi({
 export const {
     useGetAllTasksQuery,
     useUploadImageMutation,
+    useRegisterUserMutation,
 } = api;
