@@ -42,7 +42,6 @@ const Register = () => {
         }
     }
 
-
     return (
         <div className="bg-base-200 flex items-center justify-center py-10">
             <motion.div
@@ -57,7 +56,7 @@ const Register = () => {
                     animate={{ translateY: 0, opacity: 1, scaleY: 1 }}
                     transition={{ duration: .7 }}
                     style={{ originY: 1 }}
-                >Sign Up</motion.h2>
+                >Register</motion.h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="card-body">
                         <motion.input
@@ -176,7 +175,7 @@ const Register = () => {
                         >
                             <button type="submit" className="btn btn-primary w-full text-white">Submit</button>
                             <span className="mt-3 text-slate-500">
-                                <Link to="/login">Sign In</Link>
+                                <Link to="/login">Log In</Link>
                             </span>
                         </motion.div>
                     </div>
