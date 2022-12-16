@@ -24,6 +24,13 @@ export const api = createApi({
                 method: "POST",
                 body: data
             })
+        }),
+        loginUser: builder.mutation({
+            query: (data) => ({
+                url: "/login-user",
+                method: "POST",
+                body: data
+            })
         })
     })
 });
@@ -32,4 +39,5 @@ export const {
     useGetAllTasksQuery,
     useUploadImageMutation,
     useRegisterUserMutation,
+    useLoginUserMutation
 } = api;

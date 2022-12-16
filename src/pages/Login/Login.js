@@ -3,13 +3,27 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import toast from "cogo-toast";
 import { motion } from "framer-motion";
+import { useLoginUserMutation } from '../../redux/api/apiSlice';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    const [loginUser] = useLoginUserMutation();
     const navigate = useNavigate()
 
     const onSubmit = async (data) => {
-        console.log(data)
+        const result = await loginUser(data);
+        
+        if (result.data) {
+            toast.success(result.data.message, {
+                position: "bottom-center"
+            });
+            reset();
+            navigate("/");
+        } else {
+            toast.error(result.error.data.message, {
+                position: "bottom-center"
+            })
+        }
     }
 
     return (
