@@ -1,14 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
+import toast from "cogo-toast";
+import { motion } from "framer-motion";
 import useImageUploder from './../../hooks/useImageUploader/useImageUploder';
 import { useRegisterUserMutation } from '../../redux/api/apiSlice';
-import toast from "cogo-toast";
 
 const Register = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const { imageUpload } = useImageUploder();
     const [registerUser] = useRegisterUserMutation()
+    const navigate = useNavigate()
 
     const onSubmit = async (data) => {
         if (data.password === data.confirmPassword) {
@@ -26,6 +28,8 @@ const Register = () => {
                 toast.success(result.data.message, {
                     position: "bottom-center"
                 })
+                reset();
+                navigate("/");
             } else {
                 toast.error(result.error.data.message, {
                     position: "bottom-center"
@@ -37,11 +41,17 @@ const Register = () => {
             })
         }
     }
-    console.log(errors)
+
 
     return (
         <div className="bg-base-200 flex items-center justify-center py-10">
-            <div className="card w-2/4 bg-base-100 shadow-xl py-10 px-5">
+            <motion.div
+                className="card w-2/4 bg-base-100 shadow-xl py-10 px-5"
+                initial={{translateY: 100, opacity: 0, scaleY: 0}}
+                animate={{translateY: 0, opacity: 1, scaleY: 1}}
+                transition={{duration: .7}}
+                style={{originY: 1}}
+            >
                 <h2 className="text-center text-2xl font-semibold">Sign Up</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="card-body">
@@ -132,7 +142,7 @@ const Register = () => {
                         </div>
                     </div>
                 </form>
-            </div>
+            </motion.div>
         </div>
     );
 };
