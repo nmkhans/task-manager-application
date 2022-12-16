@@ -47,18 +47,27 @@ const Register = () => {
         <div className="bg-base-200 flex items-center justify-center py-10">
             <motion.div
                 className="card w-2/4 bg-base-100 shadow-xl py-10 px-5"
-                initial={{translateY: 100, opacity: 0, scaleY: 0}}
-                animate={{translateY: 0, opacity: 1, scaleY: 1}}
-                transition={{duration: .7}}
-                style={{originY: 1}}
+                initial={{scale: 0}}
+                animate={{scale: 1}}
+                transition={{duration: .5}}
             >
-                <h2 className="text-center text-2xl font-semibold">Sign Up</h2>
+                <motion.h2
+                    className="text-center text-2xl font-semibold"
+                    initial={{ translateY: 100, opacity: 0, scaleY: 0 }}
+                    animate={{ translateY: 0, opacity: 1, scaleY: 1 }}
+                    transition={{ duration: .7 }}
+                    style={{ originY: 1 }}
+                >Sign Up</motion.h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="card-body">
-                        <input
+                        <motion.input
                             type="text"
                             placeholder="First Name"
                             className="input input-bordered w-full my-1"
+                            initial={{ translateY: 100, opacity: 0, scaleY: 0 }}
+                            animate={{ translateY: 0, opacity: 1, scaleY: 1 }}
+                            transition={{ duration: .7 }}
+                            style={{ originY: 1 }}
                             {...register("firstName", {
                                 required: {
                                     value: true,
@@ -67,10 +76,14 @@ const Register = () => {
                             })}
                         />
                         <p className="text-red-500">{errors?.firstName?.type === "required" && errors?.firstName?.message}</p>
-                        <input
+                        <motion.input
                             type="text"
                             placeholder="Last Name"
                             className="input input-bordered w-full my-1"
+                            initial={{ translateY: 100, opacity: 0, scaleY: 0 }}
+                            animate={{ translateY: 0, opacity: 1, scaleY: 1 }}
+                            transition={{ duration: .7 }}
+                            style={{ originY: 1 }}
                             {...register("lastName", {
                                 required: {
                                     value: true,
@@ -79,10 +92,14 @@ const Register = () => {
                             })}
                         />
                         <p className="text-red-500">{errors?.lastName?.type === "required" && errors?.lastName?.message}</p>
-                        <input
+                        <motion.input
                             type="email"
                             placeholder="Email Address"
                             className="input input-bordered w-full my-1"
+                            initial={{ translateY: 100, opacity: 0, scaleY: 0 }}
+                            animate={{ translateY: 0, opacity: 1, scaleY: 1 }}
+                            transition={{ duration: .7 }}
+                            style={{ originY: 1 }}
                             {...register("email", {
                                 required: {
                                     value: true,
@@ -91,9 +108,13 @@ const Register = () => {
                             })}
                         />
                         <p className="text-red-500">{errors?.email?.type === "required" && errors?.email?.message}</p>
-                        <input
+                        <motion.input
                             type="number"
                             placeholder="Phone Number" className="input input-bordered w-full my-1"
+                            initial={{ translateY: 100, opacity: 0, scaleY: 0 }}
+                            animate={{ translateY: 0, opacity: 1, scaleY: 1 }}
+                            transition={{ duration: .7 }}
+                            style={{ originY: 1 }}
                             {...register("phone", {
                                 required: {
                                     value: true,
@@ -102,18 +123,26 @@ const Register = () => {
                             })}
                         />
                         <p className="text-red-500">{errors?.phone?.type === "required" && errors?.phone?.message}</p>
-                        <input
+                        <motion.input
                             type="file"
                             className="input input-bordered w-full my-1 p-2"
+                            initial={{ translateY: 100, opacity: 0, scaleY: 0 }}
+                            animate={{ translateY: 0, opacity: 1, scaleY: 1 }}
+                            transition={{ duration: .7 }}
+                            style={{ originY: 1 }}
                             {...register("image", {
                                 required: true,
                                 message: "Profile image is required!"
                             })}
                         />
                         <p className="text-red-500">{errors?.image?.type === "required" && errors?.image?.message}</p>
-                        <input
+                        <motion.input
                             type="password"
                             placeholder="Password" className="input input-bordered w-full my-1"
+                            initial={{ translateY: 100, opacity: 0, scaleY: 0 }}
+                            animate={{ translateY: 0, opacity: 1, scaleY: 1 }}
+                            transition={{ duration: .7 }}
+                            style={{ originY: 1 }}
                             {...register("password", {
                                 required: {
                                     value: true,
@@ -122,9 +151,13 @@ const Register = () => {
                             })}
                         />
                         <p className="text-red-500">{errors?.password?.type === "required" && errors?.password?.message}</p>
-                        <input
+                        <motion.input
                             type="password"
                             placeholder="Confirm Password" className="input input-bordered w-full my-1"
+                            initial={{ translateY: 100, opacity: 0, scaleY: 0 }}
+                            animate={{ translateY: 0, opacity: 1, scaleY: 1 }}
+                            transition={{ duration: .7 }}
+                            style={{ originY: 1 }}
                             {...register("confirmPassword", {
                                 required: {
                                     value: true,
@@ -134,12 +167,18 @@ const Register = () => {
                         />
                         <p className="text-red-500">{errors?.password?.type === "required" && errors?.password?.message}</p>
 
-                        <div className="card-actions mt-3 justify-center">
+                        <motion.div
+                            className="card-actions mt-3 justify-center"
+                            initial={{ translateY: 100, opacity: 0, scaleY: 0 }}
+                            animate={{ translateY: 0, opacity: 1, scaleY: 1 }}
+                            transition={{ duration: .7 }}
+                            style={{ originY: 1 }}
+                        >
                             <button type="submit" className="btn btn-primary w-full text-white">Submit</button>
                             <span className="mt-3 text-slate-500">
                                 <Link to="/login">Sign In</Link>
                             </span>
-                        </div>
+                        </motion.div>
                     </div>
                 </form>
             </motion.div>
