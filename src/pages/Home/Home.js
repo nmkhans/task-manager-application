@@ -1,7 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 import "./Home.css";
 import { Outlet } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { handleSidebarState } from "../../redux/state/sidebarSlice/sidebarSlice";
 import { MdOutlineDashboard, MdDownloadDone } from "react-icons/md";
 import { AiOutlineEdit } from "react-icons/ai";
 import { GiSandsOfTime } from "react-icons/gi";
@@ -14,6 +15,7 @@ import HomeLinks from './../../components/HomeLinks/HomeLinks';
 const Home = () => {
     const sidebarRef = useRef(null);
     const sideBar = useSelector((state) => state.sidebar.value);
+    const dispatch = useDispatch();
 
     if (sideBar) {
         sidebarRef?.current?.classList.remove("sidebar-close");
@@ -24,7 +26,8 @@ const Home = () => {
     }
 
     useEffect(() => {
-        keyHandler(sidebarRef)
+        keyHandler(sidebarRef, sideBar, dispatch, handleSidebarState)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

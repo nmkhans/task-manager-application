@@ -1,7 +1,8 @@
-const keyHandler = (sidebarRef) => {
+const keyHandler = (sidebarRef, sideBar, dispatch, handleSidebarState) => {
     window.addEventListener("keyup", (event) => {
         if (event.key === "Escape") {
-            if (sidebarRef?.current?.classList.contains("sidebar-close")) {
+            dispatch(handleSidebarState());
+            if (sideBar) {
                 sidebarRef?.current?.classList.remove("sidebar-close");
                 sidebarRef?.current?.classList.add("sidebar-open");
             } else {

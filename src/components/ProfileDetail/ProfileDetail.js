@@ -21,7 +21,7 @@ const ProfileDetail = () => {
                         </div>
                     </div>
                 </div>
-                <h3 className="text-lg text-slate-800 font-semibold text-center">
+                <h3 className="text-lg text-slate-700 font-semibold text-center">
                     Moin Khan
                 </h3>
             </div>

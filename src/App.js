@@ -11,6 +11,7 @@ import NewTask from './pages/NewTask/NewTask';
 import CreateTask from './pages/CreateTask/CreateTask';
 import CompletedTask from './pages/CompletedTask/CompletedTask';
 import CanceledTask from './pages/CanceledTask/CanceledTask';
+import Profile from './pages/Profile/Profile';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </Header>
     </>

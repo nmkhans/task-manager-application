@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import ProfileDetail from './../ProfileDetail/ProfileDetail';
 import HeaderProfile from '../HeaderProfile/HeaderProfile';
-import { BsListTask, BsLayoutSidebarInset } from 'react-icons/bs';
+import { BsListTask, BsLayoutSidebarInsetReverse, BsLayoutSidebarInset } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { handleSidebarState } from '../../redux/state/sidebarSlice/sidebarSlice';
 
 const Header = ({ children }) => {
     const [profile, setProfile] = useState(false);
     const [mobileProfile, setMobileProfile] = useState(false);
+    const sidebar = useSelector((state) => state.sidebar.value);
     const dispatch = useDispatch()
 
     const handleSideBar = () => {
@@ -23,7 +24,11 @@ const Header = ({ children }) => {
                     <div className="w-full navbar bg-base-100 shadow-md">
                         <div>
                             <label onClick={handleSideBar} htmlFor="task-manager-sidebar" className="drawer-button cursor-pointer text-2xl ml-5 mr-3">
-                                <BsLayoutSidebarInset />
+                                {!sidebar ? (
+                                    <BsLayoutSidebarInsetReverse />
+                                ) : (
+                                    <BsLayoutSidebarInset />
+                                ) }
                             </label>
                         </div>
                         <div className="flex-1 px-2 mx-2">
