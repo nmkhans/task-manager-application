@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BsListTask, BsLayoutSidebarInset } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { handleSidebarState } from '../../redux/state/sidebarSlice/sidebarSlice';
+import ProfileDetail from './../ProfileDetail/ProfileDetail';
 
 const Header = ({ children }) => {
+    const [profile, setProfile] = useState(false);
+    const [mobileProfile, setMobileProfile] = useState(false);
     const dispatch = useDispatch()
 
     const handleSideBar = () => {
@@ -14,7 +17,15 @@ const Header = ({ children }) => {
     function NavItems() {
         return (
             <>
-                <li>Image</li>
+                <li>
+                    <div className="relative">
+                        <div className="avatar">
+                            <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                <img src="https://placeimg.com/192/192/people" alt="profile" />
+                            </div>
+                        </div>
+                    </div>
+                </li>
             </>
         )
     }
@@ -42,8 +53,14 @@ const Header = ({ children }) => {
                             </label>
                         </div>
                         <div className="flex-none hidden lg:block">
-                            <ul className="menu menu-horizontal mr-10">
+                            <ul onMouseOver={() => setProfile(true)}
+                            onMouseOut={() => setProfile(false)} className="menu menu-horizontal mr-10 relative">
                                 <NavItems />
+                                {profile && (
+                                    <div className="absolute top-[100%] right-[-30%]">
+                                        <ProfileDetail />
+                                    </div>
+                                )}
                             </ul>
                         </div>
                     </div>
@@ -51,8 +68,9 @@ const Header = ({ children }) => {
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="task-manager-header" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 bg-base-100">
+                    <ul onClick={() => setMobileProfile(!mobileProfile)} className="menu p-4 w-80 bg-base-100 relative">
                         <NavItems />
+                        {mobileProfile && <ProfileDetail />}
                     </ul>
                 </div>
             </div>

@@ -30,7 +30,7 @@ const Home = () => {
     return (
         <div className="Home pt-1">
             <div className="flex flex-row">
-                <div ref={sidebarRef} className="sidebar sidebar-open">
+                <div ref={sidebarRef} className="sidebar sidebar-close">
                     <div className="drawer drawer-mobile">
                         <input id="task-manager-sidebar" type="checkbox" className="drawer-toggle" />
                         <div className="drawer-side">
