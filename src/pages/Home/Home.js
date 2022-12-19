@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from 'react';
 import "./Home.css";
 import { Outlet } from "react-router-dom";
 import { useSelector } from 'react-redux';
-import LinkTo from '../../components/LinkTo/LinkTo';
 import { MdOutlineDashboard, MdDownloadDone } from "react-icons/md";
 import { AiOutlineEdit } from "react-icons/ai";
 import { GiSandsOfTime } from "react-icons/gi";
