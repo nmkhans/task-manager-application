@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import ProfileDetail from './../ProfileDetail/ProfileDetail';
+import HeaderProfile from '../HeaderProfile/HeaderProfile';
 import { BsListTask, BsLayoutSidebarInset } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { handleSidebarState } from '../../redux/state/sidebarSlice/sidebarSlice';
-import ProfileDetail from './../ProfileDetail/ProfileDetail';
 
 const Header = ({ children }) => {
     const [profile, setProfile] = useState(false);
@@ -12,22 +13,6 @@ const Header = ({ children }) => {
 
     const handleSideBar = () => {
         dispatch(handleSidebarState())
-    }
-
-    function NavItems() {
-        return (
-            <>
-                <li>
-                    <div className="relative">
-                        <div className="avatar">
-                            <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                <img src="https://placeimg.com/192/192/people" alt="profile" />
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </>
-        )
     }
 
     return (
@@ -55,7 +40,7 @@ const Header = ({ children }) => {
                         <div className="flex-none hidden lg:block">
                             <ul onMouseOver={() => setProfile(true)}
                             onMouseOut={() => setProfile(false)} className="menu menu-horizontal mr-10 relative">
-                                <NavItems />
+                                <HeaderProfile />
                                 {profile && (
                                     <div className="absolute top-[100%] right-[-30%]">
                                         <ProfileDetail />
@@ -69,7 +54,7 @@ const Header = ({ children }) => {
                 <div className="drawer-side">
                     <label htmlFor="task-manager-header" className="drawer-overlay"></label>
                     <ul onClick={() => setMobileProfile(!mobileProfile)} className="menu p-4 w-80 bg-base-100 relative">
-                        <NavItems />
+                        <HeaderProfile />
                         {mobileProfile && <ProfileDetail />}
                     </ul>
                 </div>
