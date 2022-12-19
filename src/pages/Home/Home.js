@@ -9,6 +9,7 @@ import { GiSandsOfTime } from "react-icons/gi";
 import { AiOutlineBars } from "react-icons/ai";
 import { CgCloseR } from "react-icons/cg";
 import keyHandler from './../../utilities/keyHandler/keyHandler';
+import HomeLinks from './../../components/HomeLinks/HomeLinks';
 
 
 const Home = () => {
@@ -36,54 +37,36 @@ const Home = () => {
                         <div className="drawer-side">
                             <label htmlFor="task-manager-sidebar" className="drawer-overlay"></label>
                             <ul className="menu p-4 w-80 bg-base-100 text-base-content">
-                                <li>
-                                    <LinkTo to="/">
-                                        <span>
-                                            <MdOutlineDashboard />
-                                        </span>
-                                        Dashboard
-                                    </LinkTo>
-                                </li>
-                                <li>
-                                    <LinkTo to="/create-task">
-                                        <span>
-                                            <AiOutlineEdit />
-                                        </span>
-                                        Create New
-                                    </LinkTo>
-                                </li>
-                                <li>
-                                    <LinkTo to="/new-task">
-                                        <span>
-                                            <AiOutlineBars />
-                                        </span>
-                                        New Task
-                                    </LinkTo>
-                                </li>
-                                <li>
-                                    <LinkTo to="/pending-task">
-                                        <span>
-                                            <GiSandsOfTime />
-                                        </span>
-                                        Pending
-                                    </LinkTo>
-                                </li>
-                                <li>
-                                    <LinkTo to="/completed-task">
-                                        <span>
-                                            <MdDownloadDone />
-                                        </span>
-                                        Completed
-                                    </LinkTo>
-                                </li>
-                                <li>
-                                    <LinkTo to="/canceled-task">
-                                        <span>
-                                            <CgCloseR />
-                                        </span>
-                                        Canceled
-                                    </LinkTo>
-                                </li>
+                                <HomeLinks
+                                    path="/"
+                                    name="Dashboard"
+                                    Icon={MdOutlineDashboard}
+                                />
+                                <HomeLinks
+                                    path="/create-task"
+                                    name="Create New"
+                                    Icon={AiOutlineEdit}
+                                />
+                                <HomeLinks
+                                    path="/new-task"
+                                    name="New Task"
+                                    Icon={AiOutlineBars}
+                                />
+                                <HomeLinks
+                                    path="/pending-task"
+                                    name="Pending"
+                                    Icon={GiSandsOfTime}
+                                />
+                                <HomeLinks
+                                    path="/completed-task"
+                                    name="Completed"
+                                    Icon={MdDownloadDone}
+                                />
+                                <HomeLinks
+                                    path="/canceled-task"
+                                    name="Canceled"
+                                    Icon={CgCloseR}
+                                />
                             </ul>
                         </div>
                     </div>
