@@ -51,7 +51,7 @@ const Register = () => {
                 transition={{duration: .5}}
             >
                 <motion.h2
-                    className="text-center text-2xl font-semibold"
+                    className="text-center text-slate-700 text-2xl font-semibold"
                     initial={{ translateY: 100, opacity: 0, scaleY: 0 }}
                     animate={{ translateY: 0, opacity: 1, scaleY: 1 }}
                     transition={{ duration: .7 }}
