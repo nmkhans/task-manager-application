@@ -12,13 +12,18 @@ import CreateTask from './pages/CreateTask/CreateTask';
 import CompletedTask from './pages/CompletedTask/CompletedTask';
 import CanceledTask from './pages/CanceledTask/CanceledTask';
 import Profile from './pages/Profile/Profile';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 
 function App() {
   return (
     <>
       <Header>
         <Routes>
-          <Route path="/" element={<Home />}>
+          <Route path="/" element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }>
             <Route index element={<DashBoard />} />
             <Route path="/create-task" element={<CreateTask />} />
             <Route path="/new-task" element={<NewTask />} />

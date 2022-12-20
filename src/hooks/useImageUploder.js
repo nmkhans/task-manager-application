@@ -1,4 +1,4 @@
-import { useUploadImageMutation } from "../../redux/api/apiSlice";
+import { useUploadImageMutation } from "../redux/api/apiSlice";
 
 const useImageUploder = () => {
     const [uploadImage] = useUploadImageMutation()

@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import toast from "cogo-toast";
 import { motion } from "framer-motion";
-import useImageUploder from './../../hooks/useImageUploader/useImageUploder';
+import useImageUploder from '../../hooks/useImageUploder';
 import { useRegisterUserMutation } from '../../redux/api/apiSlice';
 
 const Register = () => {
@@ -28,8 +28,9 @@ const Register = () => {
                 toast.success(result.data.message, {
                     position: "bottom-center"
                 })
+
                 reset();
-                navigate("/");
+                navigate("/login");
             } else {
                 toast.error(result.error.data.message, {
                     position: "bottom-center"
@@ -46,9 +47,9 @@ const Register = () => {
         <div className="bg-base-200 flex items-center justify-center py-10">
             <motion.div
                 className="card w-2/4 bg-base-100 shadow-xl py-10 px-5"
-                initial={{scale: 0}}
-                animate={{scale: 1}}
-                transition={{duration: .5}}
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: .5 }}
             >
                 <motion.h2
                     className="text-center text-slate-700 text-2xl font-semibold"
@@ -112,7 +113,7 @@ const Register = () => {
                         />
                         <p className="text-red-500">{errors?.email?.type === "required" && errors?.email?.message}</p>
                         <p className="text-red-500">{errors?.email?.type === "pattern" && errors?.email?.message}</p>
-                        
+
                         <motion.input
                             type="number"
                             placeholder="Phone Number" className="input input-bordered w-full my-1"
