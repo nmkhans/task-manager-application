@@ -103,10 +103,16 @@ const Register = () => {
                                 required: {
                                     value: true,
                                     message: "Email is required!"
+                                },
+                                pattern: {
+                                    value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
+                                    message: 'Enter valid email!'
                                 }
                             })}
                         />
                         <p className="text-red-500">{errors?.email?.type === "required" && errors?.email?.message}</p>
+                        <p className="text-red-500">{errors?.email?.type === "pattern" && errors?.email?.message}</p>
+                        
                         <motion.input
                             type="number"
                             placeholder="Phone Number" className="input input-bordered w-full my-1"

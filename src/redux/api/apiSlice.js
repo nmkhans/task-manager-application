@@ -1,9 +1,10 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import mode from "../../project.config";
 
 export const api = createApi({
     reducerPath: "api",
     baseQuery: fetchBaseQuery({
-        baseUrl: "http://localhost:5000/api/v1"
+        baseUrl: `${mode.production ? process.env.REACT_APP_PRODUCTION_API : process.env.REACT_APP_DEVELOPMENT_API}`
     }),
     tagTypes: ["user", "task"],
     endpoints: (builder) => ({

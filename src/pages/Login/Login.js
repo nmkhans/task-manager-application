@@ -12,7 +12,7 @@ const Login = () => {
 
     const onSubmit = async (data) => {
         const result = await loginUser(data);
-        
+
         if (result.data) {
             toast.success(result.data.message, {
                 position: "bottom-center"
@@ -55,10 +55,16 @@ const Login = () => {
                                 required: {
                                     value: true,
                                     message: "Email is required!"
+                                },
+                                pattern: {
+                                    value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
+                                    message: 'Enter valid email!'
                                 }
                             })}
                         />
                         <p className="text-red-500">{errors?.email?.type === "required" && errors?.email?.message}</p>
+                        <p className="text-red-500">{errors?.email?.type === "pattern" && errors?.email?.message}</p>
+
                         <motion.input
                             type="password"
                             placeholder="Password" className="input input-bordered w-full my-1"

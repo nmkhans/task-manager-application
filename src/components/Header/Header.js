@@ -23,7 +23,7 @@ const Header = ({ children }) => {
                 <div className="drawer-content flex flex-col">
                     <div className="w-full navbar bg-base-100 shadow-md">
                         <div>
-                            <label onClick={handleSideBar} htmlFor="task-manager-sidebar" className="drawer-button cursor-pointer text-2xl ml-5 mr-3">
+                            <label onClick={handleSideBar} htmlFor="task-manager-sidebar" className="drawer-button cursor-pointer text-2xl text-slate-700 ml-5 mr-3">
                                 {!sidebar ? (
                                     <BsLayoutSidebarInsetReverse />
                                 ) : (
