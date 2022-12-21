@@ -5,7 +5,7 @@ import { AiOutlineUser } from "react-icons/ai";
 import { FiLogOut } from "react-icons/fi";
 
 const ProfileDetail = ({user, handleLogout}) => {
-
+    
     return (
         <motion.div
             initial={{ scale: 0 }}
@@ -18,12 +18,12 @@ const ProfileDetail = ({user, handleLogout}) => {
                 <div className="text-center">
                     <div className="avatar">
                         <div className="w-14 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                            <img src="https://placeimg.com/192/192/people" alt="profile" />
+                            <img src={user?.image} alt="profile" />
                         </div>
                     </div>
                 </div>
-                <h3 className="text-lg text-slate-700 font-semibold text-center">
-                    Moin Khan
+                <h3 className="text-lg text-slate-700 font-semibold text-center my-2">
+                    {user.firstName + " " + user.lastName}
                 </h3>
             </div>
             <li className="block">

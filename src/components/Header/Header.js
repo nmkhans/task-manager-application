@@ -58,7 +58,7 @@ const Header = ({ children }) => {
                             {user && (
                                 <ul onMouseOver={() => setProfile(true)}
                                     onMouseOut={() => setProfile(false)} className="menu menu-horizontal mr-10 relative">
-                                    <HeaderProfile />
+                                    <HeaderProfile user={user} />
                                     {profile && (
                                         <div className="absolute top-[100%] right-[-30%]">
                                             <ProfileDetail
