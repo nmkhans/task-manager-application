@@ -1,15 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import toast from "cogo-toast";
 import { motion } from "framer-motion";
+import { useDispatch } from "react-redux";
 import { useLoginUserMutation } from '../../redux/api/apiSlice';
-import useToken from './../../hooks/useToken';
+import { addUser } from '../../redux/state/userSlice/userSlice';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const [loginUser] = useLoginUserMutation();
-    const validateUser = useToken();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const onSubmit = async (data) => {
         const result = await loginUser(data);
@@ -18,8 +20,9 @@ const Login = () => {
             toast.success(result.data.message, {
                 position: "bottom-center"
             });
+            dispatch(addUser(result.data))
             reset();
-            validateUser(result.data)
+            navigate("/")
         } else {
             toast.error(result.error.data.message, {
                 position: "bottom-center"

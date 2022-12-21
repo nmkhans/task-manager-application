@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 import { AiOutlineUser } from "react-icons/ai";
 import { FiLogOut } from "react-icons/fi";
 
-const ProfileDetail = () => {
+const ProfileDetail = ({user, handleLogout}) => {
+
     return (
         <motion.div
             initial={{ scale: 0 }}
@@ -35,7 +36,7 @@ const ProfileDetail = () => {
             </li>
             <li className="block">
                 <div className="block hover:bg-primary hover:text-base-100 hover:pl-10 transition-all text-center">
-                    <Link className="flex items-center justify-center" to="/profile">
+                    <Link onClick={handleLogout} className="flex items-center justify-center" to="/login">
                         <span className="mr-1"><FiLogOut /></span>
                         <span>Logout</span>
                     </Link>
