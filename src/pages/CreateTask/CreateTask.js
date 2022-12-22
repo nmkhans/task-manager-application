@@ -1,13 +1,17 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 import { useForm } from 'react-hook-form';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useCreateTaskMutation } from '../../redux/api/apiSlice';
 import toast from "cogo-toast";
+import { removeUser } from '../../redux/state/userSlice/userSlice';
 
 const CreateTask = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const user = useSelector(state => state.user.user);
     const [createTask] = useCreateTaskMutation()
+    const dispatch = useDispatch();
+    const navigate = useNavigate()
 
     const onSubmit = async (data) => {
         try {
@@ -16,12 +20,16 @@ const CreateTask = () => {
                 email: user.email
             }
 
-            const result = await createTask(taskData, user.email);
+            const result = await createTask(taskData);
 
             if (result.data) {
                 toast.success(result.data.message, {
                     position: "bottom-center"
                 })
+                reset();
+            } else if (result.error.status === 403) {
+                dispatch(removeUser())
+                navigate("/login");
             }
 
         } catch (error) {

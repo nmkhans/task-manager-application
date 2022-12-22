@@ -34,11 +34,11 @@ export const api = createApi({
             })
         }),
         createTask: builder.mutation({
-            query: (data, email) => ({
+            query: (data) => ({
                 headers: {
-                    authorization: JSON.parse(localStorage.getItem("accessToken"))
+                    authorization: `Bearer ${JSON.parse(localStorage.getItem("accessToken"))}`
                 },
-                url: `/create-task?email=${email}`,
+                url: `/create-task?email=${data.email}`,
                 method: "POST",
                 body: data
             }),
