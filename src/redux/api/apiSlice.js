@@ -59,6 +59,15 @@ export const api = createApi({
                 body: data
             }),
             invalidatesTags: ["task"]
+        }),
+        getTasks: builder.query({
+            query: ({ email, status }) => ({
+                headers: {
+                    authorization: authorization
+                },
+                url: `/filter-task?status=${status}&email=${email}`
+            }),
+            providesTags: ["task"]
         })
     })
 });
@@ -70,4 +79,5 @@ export const {
     useGetAllTasksQuery,
     useGetTaskStatsQuery,
     useCreateTaskMutation,
+    useGetTasksQuery,
 } = api;
