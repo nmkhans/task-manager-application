@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useSelector } from "react-redux";
 import { useGetTaskStatsQuery } from "../../redux/api/apiSlice";
+import Loading from './../../components/Loading/Loading';
 
 const DashBoard = () => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    const { data, isLoading } = useGetTaskStatsQuery(user.email);
-    
-    if(isLoading) return "loading..."
+    const user = useSelector(state => state?.user?.user);
+    const { data, isLoading } = useGetTaskStatsQuery(user?.email);
+
+    if (isLoading) return <Loading />
     console.log(data)
-    
+
 
     return (
         <div className="py-5 px-10">
