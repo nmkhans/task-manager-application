@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useGetTaskStatsQuery } from "../../redux/api/apiSlice";
 
 const DashBoard = () => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const { data, isLoading } = useGetTaskStatsQuery(user.email);
+    
+    if(isLoading) return "loading..."
+    console.log(data)
+    
+
     return (
         <div className="py-5 px-10">
             <div className="card w-96 bg-base-100 shadow-xl">

@@ -1,6 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import mode from "../../project.config";
 
+const authorization = `Bearer ${JSON.parse(localStorage.getItem("accessToken"))}`;
+
 export const api = createApi({
     reducerPath: "api",
     baseQuery: fetchBaseQuery({
@@ -8,10 +10,6 @@ export const api = createApi({
     }),
     tagTypes: ["user", "task"],
     endpoints: (builder) => ({
-        getAllTasks: builder.query({
-            query: () => "/get-tasks",
-            providesTags: ["task"]
-        }),
         uploadImage: builder.mutation({
             query: (data) => ({
                 url: "/image-upload",
@@ -33,10 +31,28 @@ export const api = createApi({
                 body: data
             })
         }),
+        getAllTasks: builder.query({
+            query: () => ({
+                headers: {
+                    authorization: authorization
+                },
+                url: "/get-tasks"
+            }),
+            providesTags: ["task"]
+        }),
+        getTaskStats: builder.query({
+            query: (email) => ({
+                headers: {
+                    authorization: authorization
+                },
+                url: `/count-task?email=${email}`
+            }),
+            providesTags: ["task"]
+        }),
         createTask: builder.mutation({
             query: (data) => ({
                 headers: {
-                    authorization: `Bearer ${JSON.parse(localStorage.getItem("accessToken"))}`
+                    authorization: authorization
                 },
                 url: `/create-task?email=${data.email}`,
                 method: "POST",
@@ -48,9 +64,10 @@ export const api = createApi({
 });
 
 export const {
-    useGetAllTasksQuery,
     useUploadImageMutation,
     useRegisterUserMutation,
     useLoginUserMutation,
+    useGetAllTasksQuery,
+    useGetTaskStatsQuery,
     useCreateTaskMutation,
 } = api;

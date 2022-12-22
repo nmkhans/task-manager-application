@@ -6,7 +6,7 @@ import userReducer from "./state/userSlice/userSlice";
 
 export const store = configureStore({
     reducer: {
-        [api.reducerPath]: api.reducerPath,
+        [api.reducerPath]: api.reducer,
         sidebar: sidebarReducer,
         user: userReducer
     },
