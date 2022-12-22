@@ -60,7 +60,7 @@ const Header = ({ children }) => {
                                     onMouseOut={() => setProfile(false)} className="menu menu-horizontal mr-10 relative">
                                     <HeaderProfile user={user} />
                                     {profile && (
-                                        <div className="absolute top-[100%] right-[-30%]">
+                                        <div className="absolute top-[100%] right-[-30%] z-10">
                                             <ProfileDetail
                                                 user={user}
                                                 handleLogout={handleLogout}

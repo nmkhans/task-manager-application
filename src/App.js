@@ -13,6 +13,7 @@ import CompletedTask from './pages/CompletedTask/CompletedTask';
 import CanceledTask from './pages/CanceledTask/CanceledTask';
 import Profile from './pages/Profile/Profile';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+import NoMatch from './pages/NoMatch/NoMatch';
 
 function App() {
   return (
@@ -31,9 +32,14 @@ function App() {
             <Route path="/completed-task" element={<CompletedTask />} />
             <Route path="/canceled-task" element={<CanceledTask />} />
           </Route>
+          <Route path="/profile" element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          } />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="*" element={<NoMatch />} />
         </Routes>
       </Header>
     </>

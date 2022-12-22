@@ -32,6 +32,17 @@ export const api = createApi({
                 method: "POST",
                 body: data
             })
+        }),
+        createTask: builder.mutation({
+            query: (data, email) => ({
+                headers: {
+                    authorization: JSON.parse(localStorage.getItem("accessToken"))
+                },
+                url: `/create-task?email=${email}`,
+                method: "POST",
+                body: data
+            }),
+            invalidatesTags: ["task"]
         })
     })
 });
@@ -40,5 +51,6 @@ export const {
     useGetAllTasksQuery,
     useUploadImageMutation,
     useRegisterUserMutation,
-    useLoginUserMutation
+    useLoginUserMutation,
+    useCreateTaskMutation,
 } = api;
