@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from "react-redux";
 import { useGetTaskStatsQuery } from "../../redux/api/apiSlice";
 import Loading from './../../components/Loading/Loading';
+import DashboardCard from './../../components/DasboardCard/DashboardCard';
 
 const DashBoard = () => {
     const user = useSelector(state => state?.user?.user);
@@ -12,16 +13,8 @@ const DashBoard = () => {
 
 
     return (
-        <div className="py-5 px-10">
-            <div className="card w-96 bg-base-100 shadow-xl">
-                <div className="card-body">
-                    <h2 className="card-title">Card title!</h2>
-                    <p>If a dog chews shoes whose shoes does he choose?</p>
-                    <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Buy Now</button>
-                    </div>
-                </div>
-            </div>
+        <div className="py-5 px-10 grid grid-cols-3 gap-[50px]">
+            {data.data.map(detail => <DashboardCard key={detail._id} detail={detail} />)}
         </div>
     );
 };
