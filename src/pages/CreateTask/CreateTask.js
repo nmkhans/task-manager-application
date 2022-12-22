@@ -17,7 +17,7 @@ const CreateTask = () => {
     const onSubmit = async (data) => {
         const taskData = {
             ...data,
-            email: user.email
+            email: user?.email
         }
 
         const result = await createTask(taskData);
