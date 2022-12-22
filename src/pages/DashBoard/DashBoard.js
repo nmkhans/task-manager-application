@@ -9,8 +9,6 @@ const DashBoard = () => {
     const { data, isLoading } = useGetTaskStatsQuery(user?.email);
 
     if (isLoading) return <Loading />
-    console.log(data)
-
 
     return (
         <div className="py-5 px-10 grid grid-cols-3 gap-[50px]">
