@@ -23,7 +23,7 @@ const ProfileDetail = ({user, handleLogout}) => {
                     </div>
                 </div>
                 <h3 className="text-lg text-slate-700 font-semibold text-center my-2">
-                    {user.firstName + " " + user.lastName}
+                    {user?.firstName + " " + user?.lastName}
                 </h3>
             </div>
             <li className="block">
