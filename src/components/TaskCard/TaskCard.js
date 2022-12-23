@@ -4,6 +4,13 @@ import { BsCalendarCheck } from "react-icons/bs";
 import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 
 const TaskCard = ({ detail }) => {
+
+    function getColor(status) {
+        if(status === "new") return "bg-sky-500"
+        if(status === "pending") return "bg-yellow-500"
+        if(status === "completed") return "bg-green-500"
+        if(status === "canceled") return "bg-red-500"
+    }
     
     return (
         <motion.div
@@ -27,7 +34,7 @@ const TaskCard = ({ detail }) => {
                         <button className="text-primary"><AiOutlineDelete /></button>
                     </div>
                     <div>
-                        <div className="badge badge-primary text-white">{detail.status}</div>
+                        <div className={`badge border-0 ${getColor(detail.status)} text-white`}>{detail.status}</div>
                     </div>
                 </div>
             </div>
