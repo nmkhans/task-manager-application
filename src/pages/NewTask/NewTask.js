@@ -28,7 +28,7 @@ const NewTask = () => {
 
     return (
         <div className="py-5 px-10">
-            <div className="mb-5">
+            <div className="mb-10">
                 <h2 className="text-2xl text-slate-700 font-semibold">New Task</h2>
             </div>
             <div className="grid grid-cols-3 gap-[50px]">

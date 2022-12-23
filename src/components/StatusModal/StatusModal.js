@@ -28,7 +28,6 @@ const StatusModal = ({ taskInfo }) => {
                 position: "bottom-center"
             })
             reset();
-            navigate("/")
         } else if (result.error.status === 403) {
             dispatch(removeUser())
             navigate("/login");

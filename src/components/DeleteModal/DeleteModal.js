@@ -17,7 +17,6 @@ const DeleteModal = ({ taskInfo }) => {
             toast.success(result.data.message, {
                 position: "bottom-center"
             })
-            navigate("/")
         } else if (result.error.status === 403) {
             dispatch(removeUser())
             navigate("/login");

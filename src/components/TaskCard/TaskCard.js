@@ -6,9 +6,9 @@ import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 const TaskCard = ({ detail, setTaskInfo }) => {
 
     function getColor(status) {
-        if (status === "new") return "bg-sky-500"
+        if (status === "new") return "bg-green-500"
         if (status === "pending") return "bg-yellow-500"
-        if (status === "completed") return "bg-green-500"
+        if (status === "completed") return "bg-sky-500"
         if (status === "canceled") return "bg-red-500"
     }
 
