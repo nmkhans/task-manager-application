@@ -1,8 +1,10 @@
 import React from 'react';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useGetTasksQuery } from '../../redux/api/apiSlice';
 import Loading from './../../components/Loading/Loading';
 import TaskCard from './../../components/TaskCard/TaskCard';
+import { removeUser } from "../../redux/state/userSlice/userSlice";
+import { useNavigate } from 'react-router-dom';
 
 const NewTask = () => {
     const user = useSelector(state => state.user.user);
@@ -10,9 +12,16 @@ const NewTask = () => {
         email: user?.email,
         status: "new"
     }
-    const {data, isLoading, error} = useGetTasksQuery(taskData);
+    const { data, isLoading, error } = useGetTasksQuery(taskData);
+    const dispatch = useDispatch();
+    const navigate = useNavigate()
 
-    if(isLoading) return <Loading />
+    if (isLoading) return <Loading />
+
+    if (error?.status === 403) {
+        dispatch(removeUser());
+        navigate("/login")
+    }
 
     return (
         <div className="py-5 px-10">

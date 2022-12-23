@@ -4,7 +4,7 @@ import { BsCalendarCheck } from "react-icons/bs";
 import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 
 const TaskCard = ({ detail }) => {
-    console.log(detail)
+    
     return (
         <motion.div
             className="card bg-base-100 shadow-xl"
