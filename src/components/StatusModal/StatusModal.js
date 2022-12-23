@@ -46,6 +46,7 @@ const StatusModal = ({ taskInfo }) => {
                                 className="select select-bordered w-full"
                                 {...register("status")}
                             >
+                                <option>Select status</option>
                                 <option value="new">new</option>
                                 <option value="pending">pending</option>
                                 <option value="completed">completed</option>

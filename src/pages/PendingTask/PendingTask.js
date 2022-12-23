@@ -7,6 +7,7 @@ import { removeUser } from "../../redux/state/userSlice/userSlice";
 import { useNavigate } from 'react-router-dom';
 import StatusModal from './../../components/StatusModal/StatusModal';
 import DeleteModal from '../../components/DeleteModal/DeleteModal';
+import NotAvailable from './../../components/NotAvailable/NotAvailable';
 
 const PendingTask = () => {
     const [taskInfo, setTaskInfo] = useState({});
@@ -31,9 +32,15 @@ const PendingTask = () => {
             <div className="mb-10">
                 <h2 className="text-2xl text-slate-700 font-semibold">Pending Task</h2>
             </div>
-            <div className="grid grid-cols-3 gap-[50px]">
-                {data.data.map(detail => <TaskCard key={detail._id} detail={detail} setTaskInfo={setTaskInfo} />)}
-            </div>
+            {
+                (data?.data?.length !== 0) ? (
+                    <div className="grid grid-cols-3 gap-[50px]">
+                        {data?.data?.map(detail => <TaskCard key={detail._id} detail={detail} setTaskInfo={setTaskInfo} />)}
+                    </div>
+                ) : (
+                    <NotAvailable />
+                )
+            }
             <StatusModal taskInfo={taskInfo} />
             <DeleteModal taskInfo={taskInfo} />
         </div>
