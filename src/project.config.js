@@ -1,6 +1,6 @@
 const mode = {
-    development: true,
-    production: false
+    production: true,
+    development: false
 }
 
 export default mode;
