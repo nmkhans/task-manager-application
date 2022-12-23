@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { BsCalendarCheck } from "react-icons/bs";
 import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 
-const TaskCard = ({ detail, setId }) => {
+const TaskCard = ({ detail, setTaskInfo }) => {
 
     function getColor(status) {
         if (status === "new") return "bg-sky-500"
@@ -30,7 +30,7 @@ const TaskCard = ({ detail, setId }) => {
                             <span className="mr-2"><BsCalendarCheck /></span>
                             <span>{detail.createdDate}</span>
                         </div>
-                        <button onClick={() => setId(detail._id)} className="text-primary mx-2">
+                        <button onClick={() => setTaskInfo(detail)} className="text-primary mx-2">
                             <label htmlFor="status-modal">
                                 <AiOutlineEdit />
                             </label>

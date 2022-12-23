@@ -1,6 +1,7 @@
 import React from 'react';
 
-const StatusModal = ({ id }) => {
+const StatusModal = ({ taskInfo }) => {
+    console.log(taskInfo)
 
     return (
         <div>
@@ -9,7 +10,7 @@ const StatusModal = ({ id }) => {
                 <label className="modal-box relative" htmlFor="">
                     <h3 className="text-xl text-slate-700 text-center font-bold">Update Status</h3>
                     <div className="text-center">
-                        <p className="py-4">{id}</p>
+                        <p className="py-4"></p>
                     </div>
                 </label>
             </label>

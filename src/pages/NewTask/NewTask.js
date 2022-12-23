@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import StatusModal from './../../components/StatusModal/StatusModal';
 
 const NewTask = () => {
-    const [id, setId] = useState("");
+    const [taskInfo, setTaskInfo] = useState({});
     const user = useSelector(state => state.user.user);
     const taskData = {
         email: user?.email,
@@ -31,9 +31,9 @@ const NewTask = () => {
                 <h2 className="text-2xl text-slate-700 font-semibold">New Task</h2>
             </div>
             <div className="grid grid-cols-3 gap-[50px]">
-                {data.data.map(detail => <TaskCard key={detail._id} detail={detail} setId={setId} />)}
+                {data.data.map(detail => <TaskCard key={detail._id} detail={detail} setTaskInfo={setTaskInfo} />)}
             </div>
-            <StatusModal id={id} />
+            <StatusModal taskInfo={taskInfo} />
         </div>
     );
 };
