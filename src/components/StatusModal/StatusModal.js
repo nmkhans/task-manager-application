@@ -3,10 +3,13 @@ import { useForm } from "react-hook-form";
 import { useUpdateTaskMutation } from '../../redux/api/apiSlice';
 import toast from 'cogo-toast';
 import { useNavigate } from 'react-router-dom';
+import { removeUser } from '../../redux/state/userSlice/userSlice';
+import { useDispatch } from 'react-redux';
 
 const StatusModal = ({ taskInfo }) => {
     const { register, handleSubmit, reset } = useForm();
     const [updateTask] = useUpdateTaskMutation()
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const onSubmit = async (data) => {
@@ -19,12 +22,16 @@ const StatusModal = ({ taskInfo }) => {
         }
         
         const result = await updateTask(statusData);
-        if(result.data) {
+
+        if (result.data) {
             toast.success(result.data.message, {
                 position: "bottom-center"
             })
             reset();
             navigate("/")
+        } else if (result.error.status === 403) {
+            dispatch(removeUser())
+            navigate("/login");
         }
     }
 

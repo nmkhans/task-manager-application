@@ -2,19 +2,25 @@ import React from 'react';
 import toast from "cogo-toast";
 import { useDeleteTaskMutation } from '../../redux/api/apiSlice';
 import { useNavigate } from 'react-router-dom';
+import { removeUser } from '../../redux/state/userSlice/userSlice';
+import { useDispatch } from 'react-redux';
 
 const DeleteModal = ({ taskInfo }) => {
     const [deleteTask] = useDeleteTaskMutation();
     const navigate = useNavigate()
+    const dispatch = useDispatch();
 
     const handleDelete = async () => {
         const result = await deleteTask(taskInfo._id);
         
-        if(result.data) {
+        if (result.data) {
             toast.success(result.data.message, {
                 position: "bottom-center"
-            });
+            })
             navigate("/")
+        } else if (result.error.status === 403) {
+            dispatch(removeUser())
+            navigate("/login");
         }
     }
 
