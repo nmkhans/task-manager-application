@@ -68,6 +68,27 @@ export const api = createApi({
                 url: `/filter-task?status=${status}&email=${email}`
             }),
             providesTags: ["task"]
+        }),
+        updateTask: builder.mutation({
+            query: ({ id, status }) => ({
+                headers: {
+                    authorization: authorization
+                },
+                url: `/update-task/${id}`,
+                method: "PUT",
+                body: status
+            }),
+            invalidatesTags: ["task"]
+        }),
+        deleteTask: builder.mutation({
+            query: (id) => ({
+                headers: {
+                    authorization: authorization
+                },
+                url: `delete-task/${id}`,
+                method: "DELETE",
+            }),
+            invalidatesTags: ["task"]
         })
     })
 });
@@ -80,4 +101,6 @@ export const {
     useGetTaskStatsQuery,
     useCreateTaskMutation,
     useGetTasksQuery,
+    useUpdateTaskMutation,
+    useDeleteTaskMutation
 } = api;

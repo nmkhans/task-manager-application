@@ -6,6 +6,7 @@ import TaskCard from './../../components/TaskCard/TaskCard';
 import { removeUser } from "../../redux/state/userSlice/userSlice";
 import { useNavigate } from 'react-router-dom';
 import StatusModal from './../../components/StatusModal/StatusModal';
+import DeleteModal from '../../components/DeleteModal/DeleteModal';
 
 const NewTask = () => {
     const [taskInfo, setTaskInfo] = useState({});
@@ -34,6 +35,7 @@ const NewTask = () => {
                 {data.data.map(detail => <TaskCard key={detail._id} detail={detail} setTaskInfo={setTaskInfo} />)}
             </div>
             <StatusModal taskInfo={taskInfo} />
+            <DeleteModal taskInfo={taskInfo} />
         </div>
     );
 };

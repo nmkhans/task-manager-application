@@ -27,7 +27,7 @@ const CreateTask = () => {
                 position: "bottom-center"
             })
             reset();
-            navigate("/new-task")
+            navigate("/")
         } else if (result.error.status === 403) {
             dispatch(removeUser())
             navigate("/login");

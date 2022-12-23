@@ -1,12 +1,31 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import { useUpdateTaskMutation } from '../../redux/api/apiSlice';
+import toast from 'cogo-toast';
+import { useNavigate } from 'react-router-dom';
 
 const StatusModal = ({ taskInfo }) => {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset } = useForm();
+    const [updateTask] = useUpdateTaskMutation()
+    const navigate = useNavigate();
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         const status = data.status;
-        console.log(status)
+        const statusData = {
+            id: taskInfo._id,
+            status: {
+                status: status
+            }
+        }
+        
+        const result = await updateTask(statusData);
+        if(result.data) {
+            toast.success(result.data.message, {
+                position: "bottom-center"
+            })
+            reset();
+            navigate("/")
+        }
     }
 
     return (

@@ -31,11 +31,15 @@ const TaskCard = ({ detail, setTaskInfo }) => {
                             <span>{detail.createdDate}</span>
                         </div>
                         <button onClick={() => setTaskInfo(detail)} className="text-primary mx-2">
-                            <label htmlFor="status-modal">
+                            <label className="cursor-pointer" htmlFor="status-modal">
                                 <AiOutlineEdit />
                             </label>
                         </button>
-                        <button className="text-primary"><AiOutlineDelete /></button>
+                        <button onClick={() => setTaskInfo(detail)} className="text-primary">
+                            <label className="cursor-pointer" htmlFor="delete-modal">
+                                <AiOutlineDelete />
+                            </label>
+                        </button>
                     </div>
                     <div>
                         <div className={`badge border-0 ${getColor(detail.status)} text-white`}>{detail.status}</div>
