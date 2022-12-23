@@ -3,15 +3,15 @@ import { motion } from "framer-motion";
 import { BsCalendarCheck } from "react-icons/bs";
 import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 
-const TaskCard = ({ detail }) => {
+const TaskCard = ({ detail, setId }) => {
 
     function getColor(status) {
-        if(status === "new") return "bg-sky-500"
-        if(status === "pending") return "bg-yellow-500"
-        if(status === "completed") return "bg-green-500"
-        if(status === "canceled") return "bg-red-500"
+        if (status === "new") return "bg-sky-500"
+        if (status === "pending") return "bg-yellow-500"
+        if (status === "completed") return "bg-green-500"
+        if (status === "canceled") return "bg-red-500"
     }
-    
+
     return (
         <motion.div
             className="card bg-base-100 shadow-xl"
@@ -30,7 +30,11 @@ const TaskCard = ({ detail }) => {
                             <span className="mr-2"><BsCalendarCheck /></span>
                             <span>{detail.createdDate}</span>
                         </div>
-                        <button className="text-primary mx-2"><AiOutlineEdit /></button>
+                        <button onClick={() => setId(detail._id)} className="text-primary mx-2">
+                            <label htmlFor="status-modal">
+                                <AiOutlineEdit />
+                            </label>
+                        </button>
                         <button className="text-primary"><AiOutlineDelete /></button>
                     </div>
                     <div>
