@@ -73,7 +73,7 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-                <div className="bg-base-200 grow">
+                <div className="bg-base-200 grow h-screen">
                     <Outlet />
                 </div>
             </div>
