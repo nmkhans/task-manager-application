@@ -35,7 +35,7 @@ const CreateTask = () => {
     }
 
     return (
-        <div className="py-5 lg:px-10 h-screen flex items-center">
+        <div className="py-5 lg:px-10 h-screen">
             <div className="w-3/4 mx-auto mt-5">
                 <motion.div
                     className="card bg-base-100 shadow-xl card-form"
