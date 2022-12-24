@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { AiOutlineUser } from "react-icons/ai";
 import { FiLogOut } from "react-icons/fi";
+import { RiAdminLine } from "react-icons/ri";
 
 const ProfileDetail = ({user, handleLogout}) => {
+    console.log(user.role)
     
     return (
         <motion.div
@@ -26,6 +28,16 @@ const ProfileDetail = ({user, handleLogout}) => {
                     {user?.firstName + " " + user?.lastName}
                 </h3>
             </div>
+            {(user.role === "admin") && (
+                <li className="block">
+                <div className="block hover:bg-primary hover:text-base-100 hover:pl-10 transition-all text-center">
+                    <Link className="flex items-center justify-center" to="/admin">
+                        <span className="mr-1"><RiAdminLine /></span>
+                        <span>Admin</span>
+                    </Link>
+                </div>
+            </li>
+            )}
             <li className="block">
                 <div className="block hover:bg-primary hover:text-base-100 hover:pl-10 transition-all text-center">
                     <Link className="flex items-center justify-center" to="/profile">
