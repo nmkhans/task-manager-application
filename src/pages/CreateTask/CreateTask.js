@@ -35,10 +35,10 @@ const CreateTask = () => {
     }
 
     return (
-        <div className="py-5 px-10">
+        <div className="py-5 lg:px-10 h-screen flex items-center">
             <div className="w-3/4 mx-auto mt-5">
                 <motion.div
-                    className="card bg-base-100 shadow-xl"
+                    className="card bg-base-100 shadow-xl card-form"
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: .5 }}

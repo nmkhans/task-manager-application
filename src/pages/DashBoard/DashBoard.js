@@ -14,7 +14,7 @@ const DashBoard = () => {
     return (
         <>
             {(data?.data?.length !== 0) ? (
-                <div className="py-5 px-10 grid grid-cols-3 gap-[50px]">
+                <div className="h-screen py-5 px-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[50px]">
                     {data?.data?.map(detail => <DashboardCard key={detail._id} detail={detail} />)}
                 </div>
             ) : (

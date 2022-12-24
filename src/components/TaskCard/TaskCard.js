@@ -18,6 +18,7 @@ const TaskCard = ({ detail, setTaskInfo }) => {
             initial={{ opacity: 0, scaleY: 0, translateY: 200 }}
             animate={{ opacity: 1, scaleY: 1, translateY: 0 }}
             transition={{ duration: .5 }}
+            
         >
             <div className="card-body">
                 <h2 className="text-lg text-slate-700 font-semibold">{detail.title}</h2>
