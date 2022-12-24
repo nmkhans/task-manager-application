@@ -15,6 +15,8 @@ import Profile from './pages/Profile/Profile';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import NoMatch from './pages/NoMatch/NoMatch';
 import Admin from './pages/Admin/Admin';
+import AdminBoard from './components/AdminBoard/AdminBoard';
+import UserList from './components/UserList/UserList';
 
 function App() {
   return (
@@ -37,7 +39,10 @@ function App() {
             <ProtectedRoute>
               <Admin />
             </ProtectedRoute>
-          } />
+          }>
+            <Route index element={<AdminBoard />} />
+            <Route path="/admin/user-list" element={<UserList />} />
+          </Route>
           <Route path="/profile" element={
             <ProtectedRoute>
               <Profile />
