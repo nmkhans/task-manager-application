@@ -31,9 +31,9 @@ const Login = () => {
     }
 
     return (
-        <div className="bg-base-200 h-screen flex items-center justify-center py-10">
+        <div className="bg-base-200 h-screen flex items-center justify-center py-10 px-5 md:px-0 lg:px-0">
             <motion.div
-                className="card w-2/4 bg-base-100 shadow-xl py-10 px-5"
+                className="card w-full md:w-2/4 lg:w-2/4 bg-base-100 shadow-xl py-10 px-5"
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: .5 }}
