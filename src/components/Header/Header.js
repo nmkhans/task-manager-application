@@ -76,8 +76,9 @@ const Header = ({ children }) => {
                 <div className="drawer-side">
                     <label htmlFor="task-manager-header" className="drawer-overlay"></label>
                     {user && (
-                        <ul onClick={() => setMobileProfile(!mobileProfile)} className="menu p-4 w-80 bg-base-100 relative">
+                        <ul onClick={() => setMobileProfile(!mobileProfile)} className="menu p-4 w-80 bg-base-100 relative flex items-center">
                             <HeaderProfile user={user} />
+                            <span className="text-lg text-slate-700 font-semibold">{user?.firstName + " " + user?.lastName}</span>
                             {mobileProfile && <ProfileDetail
                                 user={user}
                                 handleLogout={handleLogout}
