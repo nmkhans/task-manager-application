@@ -34,7 +34,7 @@ const CompletedTask = () => {
             </div>
             {
                 (data?.data?.length !== 0) ? (
-                    <div className="grid grid-cols-3 gap-[50px]">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[50px]">
                         {data?.data?.map(detail => <TaskCard key={detail._id} detail={detail} setTaskInfo={setTaskInfo} />)}
                     </div>
                 ) : (
