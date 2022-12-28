@@ -11,10 +11,15 @@ export const userSlice = createSlice({
     initialState,
     reducers: {
         addUser: (state, action) => {
+            const now = new Date();
+            now.setTime(now.getTime() + 1 * 3600 * 1000);
             const data = action.payload.data;
             const token = action.payload.token;
+            
             localStorage.setItem("user", JSON.stringify(data));
-            cookies.set("accessToken", token);
+            cookies.set("accessToken", token, {
+                expires: now
+            });
             state.user = data;
             state.token = token;
         },
