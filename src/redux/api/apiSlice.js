@@ -1,7 +1,11 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import {
+    createApi,
+    fetchBaseQuery
+} from '@reduxjs/toolkit/query/react';
+import cookies from "js-cookie";
 import mode from "../../project.config";
 
-const authorization = `Bearer ${JSON.parse(localStorage.getItem("accessToken"))}`;
+const authorization = `Bearer ${cookies.get("accessToken")}`;
 
 export const api = createApi({
     reducerPath: "api",
