@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { handleSidebarState } from "../../redux/state/sidebarSlice/sidebarSlice";
 import keyHandler from './../../utilities/keyHandler/keyHandler';
-import HomeLinks from './../../components/HomeLinks/HomeLinks';
+import AppLinks from './../../components/AppLinks/AppLinks';
 import { MdOutlineDashboard, MdDownloadDone } from "react-icons/md";
 import { AiOutlineEdit } from "react-icons/ai";
 import { GiSandsOfTime } from "react-icons/gi";
@@ -39,32 +39,32 @@ const Home = () => {
                         <div className="drawer-side">
                             <label htmlFor="task-manager-sidebar" className="drawer-overlay"></label>
                             <ul className="menu p-4 w-80 bg-base-100 text-base-content">
-                                <HomeLinks
+                                <AppLinks
                                     path="/"
                                     name="Dashboard"
                                     Icon={MdOutlineDashboard}
                                 />
-                                <HomeLinks
+                                <AppLinks
                                     path="/create-task"
                                     name="Create New"
                                     Icon={AiOutlineEdit}
                                 />
-                                <HomeLinks
+                                <AppLinks
                                     path="/new-task"
                                     name="New Task"
                                     Icon={AiOutlineBars}
                                 />
-                                <HomeLinks
+                                <AppLinks
                                     path="/pending-task"
                                     name="Pending"
                                     Icon={GiSandsOfTime}
                                 />
-                                <HomeLinks
+                                <AppLinks
                                     path="/completed-task"
                                     name="Completed"
                                     Icon={MdDownloadDone}
                                 />
-                                <HomeLinks
+                                <AppLinks
                                     path="/canceled-task"
                                     name="Canceled"
                                     Icon={CgCloseR}

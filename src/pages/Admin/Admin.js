@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { handleSidebarState } from "../../redux/state/sidebarSlice/sidebarSlice";
 import keyHandler from './../../utilities/keyHandler/keyHandler';
-import AdminLinks from '../../components/AdminLinks/AdminLinks';
+import AppLinks from '../../components/AppLinks/AppLinks';
 import { AiFillDashboard } from "react-icons/ai";
 import { FiUsers } from "react-icons/fi";
 
@@ -34,12 +34,12 @@ const Admin = () => {
                         <div className="drawer-side">
                             <label htmlFor="task-manager-sidebar" className="drawer-overlay"></label>
                             <ul className="menu p-4 w-80 bg-base-100 text-base-content">
-                                <AdminLinks
+                                <AppLinks
                                     path="/admin"
                                     name="Dashboard"
                                     Icon={AiFillDashboard}
                                 />
-                                <AdminLinks
+                                <AppLinks
                                     path="/admin/user-list"
                                     name="User list"
                                     Icon={FiUsers}

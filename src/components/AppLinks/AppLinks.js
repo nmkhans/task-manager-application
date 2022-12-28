@@ -1,7 +1,7 @@
 import React from 'react';
-import LinkTo from './../LinkTo/LinkTo';
+import LinkTo from '../LinkTo/LinkTo';
 
-const HomeLinks = ({path, name, Icon}) => {
+const AppLinks = ({path, name, Icon}) => {
     return (
         <li>
             <LinkTo to={path}>
@@ -14,4 +14,4 @@ const HomeLinks = ({path, name, Icon}) => {
     );
 };
 
-export default HomeLinks;
+export default AppLinks;
