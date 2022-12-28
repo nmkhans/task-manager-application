@@ -3,13 +3,13 @@ import "./Home.css";
 import { Outlet } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { handleSidebarState } from "../../redux/state/sidebarSlice/sidebarSlice";
+import keyHandler from './../../utilities/keyHandler/keyHandler';
+import HomeLinks from './../../components/HomeLinks/HomeLinks';
 import { MdOutlineDashboard, MdDownloadDone } from "react-icons/md";
 import { AiOutlineEdit } from "react-icons/ai";
 import { GiSandsOfTime } from "react-icons/gi";
 import { AiOutlineBars } from "react-icons/ai";
 import { CgCloseR } from "react-icons/cg";
-import keyHandler from './../../utilities/keyHandler/keyHandler';
-import HomeLinks from './../../components/HomeLinks/HomeLinks';
 
 
 const Home = () => {

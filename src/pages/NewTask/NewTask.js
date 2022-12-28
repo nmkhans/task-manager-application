@@ -19,7 +19,7 @@ const NewTask = () => {
     }
     const { data, isLoading, error } = useGetTasksQuery(taskData);
     const dispatch = useDispatch();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     if (isLoading) return <Loading />
 

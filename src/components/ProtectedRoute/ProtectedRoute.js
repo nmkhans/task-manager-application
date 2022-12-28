@@ -1,7 +1,8 @@
 import { Navigate } from "react-router-dom";
+import cookies from "js-cookie";
 
 const ProtectedRoute = ({ children }) => {
-    const token = JSON.parse(localStorage.getItem("accessToken"));
+    const token = cookies.get("accessToken");
     
     if(!token) {
         return <Navigate to="/login" replace={true} />

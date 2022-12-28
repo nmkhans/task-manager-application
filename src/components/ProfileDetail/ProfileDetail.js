@@ -6,7 +6,6 @@ import { FiLogOut } from "react-icons/fi";
 import { RiAdminLine } from "react-icons/ri";
 
 const ProfileDetail = ({user, handleLogout}) => {
-    console.log(user.role)
     
     return (
         <motion.div

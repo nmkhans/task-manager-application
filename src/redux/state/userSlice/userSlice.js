@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import cookies from "js-cookie";
 
 const initialState = {
     user: null,
@@ -13,7 +14,7 @@ export const userSlice = createSlice({
             const data = action.payload.data;
             const token = action.payload.token;
             localStorage.setItem("user", JSON.stringify(data));
-            localStorage.setItem("accessToken", JSON.stringify(token));
+            cookies.set("accessToken", token);
             state.user = data;
             state.token = token;
         },
@@ -23,7 +24,7 @@ export const userSlice = createSlice({
         },
         removeUser: (state) => {
             localStorage.removeItem("user");
-            localStorage.removeItem("accessToken");
+            cookies.remove("accessToken");
             state.user = null;
             state.token = "";
         }
