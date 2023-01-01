@@ -17,6 +17,8 @@ import NoMatch from './pages/NoMatch/NoMatch';
 import Admin from './pages/Admin/Admin';
 import AdminBoard from './components/AdminBoard/AdminBoard';
 import UserList from './components/UserList/UserList';
+import ResetEmail from './pages/ResetEmail/ResetEmail';
+import VarifyCode from './pages/VerifyCode/VarifyCode';
 
 function App() {
   return (
@@ -50,6 +52,8 @@ function App() {
           } />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/reset-password/email" element={<ResetEmail />} />
+          <Route path="/reset-password/verify" element={<VarifyCode />} />
           <Route path="*" element={<NoMatch />} />
         </Routes>
       </Header>

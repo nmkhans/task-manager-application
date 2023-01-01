@@ -1,32 +1,27 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useForm } from "react-hook-form";
+import { motion } from 'framer-motion';
+import { useForm } from 'react-hook-form';
+import { useGenerateOtpMutation } from '../../redux/api/apiSlice';
+import cookies from "js-cookie";
+import { useNavigate } from 'react-router-dom';
 import toast from "cogo-toast";
-import { motion } from "framer-motion";
-import { useDispatch } from "react-redux";
-import { useLoginUserMutation } from '../../redux/api/apiSlice';
-import { addUser } from '../../redux/state/userSlice/userSlice';
 
-const Login = () => {
-    const { register, handleSubmit, formState: { errors }, reset } = useForm();
-    const [loginUser] = useLoginUserMutation();
-    const dispatch = useDispatch();
+const ResetEmail = () => {
+    const { handleSubmit, register, errors } = useForm();
+    const [generateOtp] = useGenerateOtpMutation();
     const navigate = useNavigate();
 
     const onSubmit = async (data) => {
-        const result = await loginUser(data);
+        const result = await generateOtp(data?.email);
+        cookies.set("otp", result.data.data.otp)
+        cookies.set("email", result.data.data.email)
+        const token = cookies.get("otp");
 
-        if (result.data) {
-            toast.success(result.data.message, {
-                position: "bottom-center"
-            });
-            dispatch(addUser(result.data))
-            reset();
-            navigate("/")
-        } else {
-            toast.error(result.error.data.message, {
+        if(token) {
+            toast.success("OTP has been sent to email.", {
                 position: "bottom-center"
             })
+            navigate("/reset-password/verify")
         }
     }
 
@@ -44,7 +39,7 @@ const Login = () => {
                     animate={{ translateY: 0, opacity: 1, scaleY: 1 }}
                     transition={{ duration: .7 }}
                     style={{ originY: 1 }}
-                >Login</motion.h2>
+                >Enter email</motion.h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="card-body">
                         <motion.input
@@ -69,22 +64,6 @@ const Login = () => {
                         <p className="text-red-500">{errors?.email?.type === "required" && errors?.email?.message}</p>
                         <p className="text-red-500">{errors?.email?.type === "pattern" && errors?.email?.message}</p>
 
-                        <motion.input
-                            type="password"
-                            placeholder="Password" className="input input-bordered w-full my-1"
-                            initial={{ translateY: 100, opacity: 0, scaleY: 0 }}
-                            animate={{ translateY: 0, opacity: 1, scaleY: 1 }}
-                            transition={{ duration: .7 }}
-                            style={{ originY: 1 }}
-                            {...register("password", {
-                                required: {
-                                    value: true,
-                                    message: "Password is required!"
-                                }
-                            })}
-                        />
-                        <p className="text-red-500">{errors?.password?.type === "required" && errors?.password?.message}</p>
-
                         <motion.div
                             className="card-actions mt-3 justify-center"
                             initial={{ translateY: 100, opacity: 0, scaleY: 0 }}
@@ -93,12 +72,6 @@ const Login = () => {
                             style={{ originY: 1 }}
                         >
                             <button type="submit" className="btn btn-primary w-full text-white">Submit</button>
-                            <span className="mt-3 text-slate-500 w-full text-center">
-                                <Link to="/register">Register</Link>
-                            </span>
-                            <span className="text-slate-500 w-full text-center">
-                                <Link to="/reset-password/email">Forget password</Link>
-                            </span>
                         </motion.div>
                     </div>
                 </form>
@@ -107,4 +80,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default ResetEmail;

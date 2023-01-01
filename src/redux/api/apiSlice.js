@@ -89,10 +89,16 @@ export const api = createApi({
                 headers: {
                     authorization: authorization
                 },
-                url: `delete-task/${id}`,
+                url: `/delete-task/${id}`,
                 method: "DELETE",
             }),
             invalidatesTags: ["task"]
+        }),
+        generateOtp: builder.mutation({
+            query: (email) => ({
+                url: `/generate-otp?email=${email}`,
+                method: "POST"
+            })
         })
     })
 });
@@ -106,5 +112,6 @@ export const {
     useCreateTaskMutation,
     useGetTasksQuery,
     useUpdateTaskMutation,
-    useDeleteTaskMutation
+    useDeleteTaskMutation,
+    useGenerateOtpMutation
 } = api;
