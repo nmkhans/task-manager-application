@@ -1,13 +1,31 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import ReactCodeInput from "react-code-input";
+import cookies from "js-cookie";
+import { useVerifyOtpMutation } from '../../redux/api/apiSlice';
+import toast from "cogo-toast";
+import { useNavigate } from 'react-router-dom';
 
 const VarifyCode = () => {
     const [code, setCode] = useState(null);
+    const [verifyOtp] = useVerifyOtpMutation();
+    const navigate = useNavigate();
 
-    const onSubmit = (event) => {
+    const onSubmit = async (event) => {
         event.preventDefault();
-        console.log(code)
+
+        const email = cookies.get("email");
+        const otpData = {email, code}
+        const result = await verifyOtp(otpData);
+        console.log(result)
+        
+        if(result?.data?.success) {
+            toast.success("Otp verified", {
+                position: "bottom-center"
+            });
+            navigate("/reset-password")
+        }
+
     }
 
     return (

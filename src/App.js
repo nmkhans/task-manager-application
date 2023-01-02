@@ -19,6 +19,7 @@ import AdminBoard from './components/AdminBoard/AdminBoard';
 import UserList from './components/UserList/UserList';
 import ResetEmail from './pages/ResetEmail/ResetEmail';
 import VarifyCode from './pages/VerifyCode/VarifyCode';
+import ResetPassword from './pages/ResetPassword/ResetPassword';
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/reset-password/email" element={<ResetEmail />} />
           <Route path="/reset-password/verify" element={<VarifyCode />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="*" element={<NoMatch />} />
         </Routes>
       </Header>

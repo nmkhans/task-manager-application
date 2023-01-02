@@ -99,6 +99,20 @@ export const api = createApi({
                 url: `/generate-otp?email=${email}`,
                 method: "POST"
             })
+        }),
+        verifyOtp: builder.mutation({
+            query: ({email, code}) => ({
+                url: `verify-otp?email=${email}`,
+                method: "POST",
+                body: {code}
+            })
+        }),
+        resetPassword: builder.mutation({
+            query: ({email, password, status, otp}) => ({
+                url: `/reset-password?email=${email}&status=${status}`,
+                method: "PUT",
+                body: {otp, password}
+            })
         })
     })
 });
@@ -113,5 +127,7 @@ export const {
     useGetTasksQuery,
     useUpdateTaskMutation,
     useDeleteTaskMutation,
-    useGenerateOtpMutation
+    useGenerateOtpMutation,
+    useVerifyOtpMutation,
+    useResetPasswordMutation
 } = api;
