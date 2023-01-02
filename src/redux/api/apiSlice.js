@@ -113,6 +113,17 @@ export const api = createApi({
                 method: "PUT",
                 body: {otp, password}
             })
+        }),
+        getUsers: builder.query({
+            query: () => "/get-users",
+            providesTags: ["user"]
+        }),
+        deleteUser: builder.mutation({
+            query: (id) => ({
+                url: `/delete-user/${id}`,
+                method: "DELETE"
+            }),
+            invalidatesTags: ["user"]
         })
     })
 });
@@ -129,5 +140,7 @@ export const {
     useDeleteTaskMutation,
     useGenerateOtpMutation,
     useVerifyOtpMutation,
-    useResetPasswordMutation
+    useResetPasswordMutation,
+    useGetUsersQuery,
+    useDeleteUserMutation
 } = api;

@@ -16,11 +16,11 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import NoMatch from './pages/NoMatch/NoMatch';
 import Admin from './pages/Admin/Admin';
 import AdminBoard from './components/AdminBoard/AdminBoard';
-import UserList from './components/UserList/UserList';
 import ResetEmail from './pages/ResetEmail/ResetEmail';
 import VarifyCode from './pages/VerifyCode/VarifyCode';
 import ResetPassword from './pages/ResetPassword/ResetPassword';
 import TaskList from './pages/TaskList/TaskList';
+import UserList from './pages/UserList/UserList';
 
 function App() {
   return (

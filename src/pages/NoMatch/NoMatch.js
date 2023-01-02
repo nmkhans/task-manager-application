@@ -9,7 +9,6 @@ const NoMatch = () => {
             </div>
             <div className="text-center">
                 <h2 className="text-[100px] text-primary">404</h2>
-
                 <h3 className="text-[20px] text-slate-700">Page not found!</h3>
             </div>
         </div>
