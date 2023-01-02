@@ -20,6 +20,7 @@ import UserList from './components/UserList/UserList';
 import ResetEmail from './pages/ResetEmail/ResetEmail';
 import VarifyCode from './pages/VerifyCode/VarifyCode';
 import ResetPassword from './pages/ResetPassword/ResetPassword';
+import TaskList from './pages/TaskList/TaskList';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
           }>
             <Route index element={<AdminBoard />} />
             <Route path="/admin/user-list" element={<UserList />} />
+            <Route path="/admin/task-list" element={<TaskList />} />
           </Route>
           <Route path="/profile" element={
             <ProtectedRoute>
